@@ -28,10 +28,7 @@ export default function AssetsPage() {
 
   return (
     <div className="px-4 py-6">
-      <h2 className="text-base font-bold text-white font-jakarta mb-1">My Assets</h2>
-      <p className="text-2xl font-bold text-white mb-6">
-        ${totalValue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
-      </p>
+      <h2 className="text-base font-bold text-white text-xl font-jakarta mb-1">My Assets</h2>
       <div className="flex items-center justify-between py-3.5 border-b border-white/[0.06]">
         <div className="flex items-center gap-2.5">
           <img
@@ -67,10 +64,7 @@ export default function AssetsPage() {
             <p className="text-sm font-semibold text-white">
               ${item.currentValue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
             </p>
-            <p className={`text-[11px] font-medium mt-0.5 ${item.pnl >= 0 ? 'text-green-400' : 'text-red-400'}`}>
-              {item.pnl >= 0 ? '+' : ''}
-              {item.pnlPct.toFixed(1)}%
-            </p>
+            <p className="text-[11px] font-medium mt-0.5 text-white/50">${item.currentPrice.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits:2})} </p>
           </div>
         </div>
       ))}

@@ -1,17 +1,21 @@
 import AssetsBalanceCard from "../components/assets/assetsBalanceCard"
 import Transaction from "../components/assets/transaction"
 import AssetsPage from "../components/assets/assetsList"
+import Header from "../components/header/header"
 function Assets(){
     return(
-        <div className="min-h-screen bg-[#141720] pt-3">
-            <div className="mx-2 rounded-lg p-4  bg-[#23282e]">
-                <AssetsBalanceCard />
-            </div>
-            <div className="mx-8 mt-4">
-                <Transaction />
-            </div>
-            <div>
-                <AssetsPage />
+        <div>
+            <Header />
+            <div className="min-h-screen bg-[#141720]  pt-3">
+                <div className="mx-2 rounded-lg p-4  bg-[#23282e]">
+                    <AssetsBalanceCard />
+                </div>
+                <div className="mx-8 mt-4">
+                    <Transaction />
+                </div>
+                <div>
+                    <AssetsPage />
+                </div>
             </div>
         </div>
     )

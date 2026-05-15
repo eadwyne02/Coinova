@@ -13,7 +13,19 @@ function AssetsBalanceCard(){
     const usdtPrice = usdtLive?.current_price ?? 1
     const usdtValue = balance * usdtPrice
 
-    // all coin holdings value
+    const btcLive = coins.find(c => c.id === "bitcoin")
+    const btcPrice = btcLive?.current_price ?? 1
+   
+    const pnl = portfolio.filter(item => item.coinId !== 'tether').reduce((acc, item) => {
+        const live = coins.find(c => c.id === item.coinId)
+        const currentPrice = live?.current_price ?? item.buyPrice
+        const currentValue = item.amount * currentPrice
+        const costBasis = item.amount * item.buyPrice
+        return acc + (currentValue - costBasis)
+    }, 0)
+    const pnlPct = portfolio.filter(i => i.coinId !== 'tether').length > 0
+    ? (pnl / portfolio.filter(i => i.coinId !== 'tether').reduce((acc, item) => acc + item.amount * item.buyPrice, 0)) * 100
+    : 0
     const holdings = portfolio
         .filter(item => item.coinId !== 'tether')
         .map(item => {
@@ -21,9 +33,8 @@ function AssetsBalanceCard(){
         const currentPrice = live?.current_price ?? item.buyPrice
         return item.amount * currentPrice
         })
-
     const totalValue = holdings.reduce((acc, val) => acc + val, 0) + usdtValue
-
+    const totalInBtc = totalValue / btcPrice
     return(
         <div>
             <div className="flex flex-col gap-4">
@@ -64,7 +75,7 @@ function AssetsBalanceCard(){
                             <path d="M5 9 Q8 6 12 9 Q16 12 19 9"/>
                             <path d="M5 15 Q8 12 12 15 Q16 18 19 15"/>
                         </svg>
-                        <p className="text-[#9096a0] text-sm">0.00000 BTC</p>
+                        <p className="text-[#9096a0] text-sm">{showBalance ? `${totalInBtc.toFixed(6)} BTC`: '*****'}</p>
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9096a0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="10"/>
                             <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
@@ -73,21 +84,26 @@ function AssetsBalanceCard(){
                     </div>
                     <div className="flex gap-2 mt-2">
                         <p className="text-[#9096a0] text-sm">Today's P&L</p>
-                        <button className="text-sm text-[#00a9f9]">0.00 USD(+0.00%)  </button>
+                        <button className={`text-sm ${pnl >= 0 ? 'text-[#00a9f9]' : 'text-red-400'}`}>
+                            {showBalance
+                            ? `${pnl >= 0 ? '+' : ''}${pnl.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} USD (${pnl >= 0 ? '+' : ''}${pnlPct.toFixed(2)}%)`
+                            : '*****'
+                            }
+                        </button>
                     </div>
                     <div className="h-px opacity-40 w-full bg-[#9096a0] my-2"></div>
                     <div className="flex gap-20">
                         <div>
                             <p className="text-[#9096a0]">Available balance</p>
                             <div className=" flex gap-1 items-end">
-                                <p className="font-medium text-white/70 text-medium">{totalValue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                                <p className="font-medium text-white/70 text-medium">{showBalance ? totalValue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : "*****"}</p>
                                 <p className="text-[#9096a0] text-xs">USD</p>
                             </div>
                         </div>
                         <div>
                             <p className="text-[#9096a0]">In Use</p>
                             <div className="flex items-end gap-1">
-                                <p className="font-medium text-white/70 text-medium">0.00</p>
+                                <p className="font-medium text-white/70 text-medium">{showBalance ? 0.00 : "*****"}</p>
                                 <p className="text-[#9096a0] text-xs">USD</p>
                             </div>
                         </div>

@@ -30,7 +30,7 @@ export default function BottomNav() {
                     </svg>
                     )}
                 </button>
-                <button onClick={() => navigate('/exchange')} className="flex flex-col items-center p-2"> {isActive('/exchange') ? (
+                <button onClick={() => navigate('/convert')} className="flex flex-col items-center p-2"> {isActive('/convert') ? (
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#00a9f9" stroke="none">
                         <path d="M18.293 3.293a1 1 0 0 1 1.414 0l3 3a1 1 0 0 1 0 1.414l-3 3a1 1 0 0 1-1.414-1.414L19.586 9H3a1 1 0 0 1 0-2h16.586l-1.293-1.293a1 1 0 0 1 0-1.414zM5.707 13.293a1 1 0 0 1 0 1.414L4.414 16H21a1 1 0 0 1 0 2H4.414l1.293 1.293a1 1 0 0 1-1.414 1.414l-3-3a1 1 0 0 1 0-1.414l3-3a1 1 0 0 1 1.414 0z"/>
                     </svg>) : (

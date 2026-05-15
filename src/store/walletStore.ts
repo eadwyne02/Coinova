@@ -1,7 +1,7 @@
 import { buyCoin } from "./portfolioStore"
 
 const KEY = 'crypto_wallet'
-const INITIALIZED_KEY = 'crypto_wallet_initialized'
+// const INITIALIZED_KEY = 'crypto_wallet_initialized'
 
 export function getBalance(): number {
   const data = localStorage.getItem(KEY)
@@ -27,7 +27,7 @@ export function deductBalance(amount: number): boolean {
   const current = getBalance()
   if (current < amount) return false
   localStorage.setItem(KEY, (current - amount).toString())
-  
+
   buyCoin({
     coinId: 'tether',
     symbol: 'usdt',
@@ -38,4 +38,8 @@ export function deductBalance(amount: number): boolean {
   })
 
   return true
+}
+export function deposit(amount: number) {
+  const current = getBalance()
+  localStorage.setItem(KEY, (current + amount).toString())
 }
