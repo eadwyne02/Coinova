@@ -20,7 +20,7 @@ export default function CoinRow({ coin }: { coin: Coin }) {
     <>
       <div
         className="flex items-center justify-between py-3.5 border-b border-white/[0.06] last:border-none cursor-pointer"
-        onClick={() => setShowModal(true)}  // 👈 tap row to buy
+        // onClick={() => setShowModal(true)} 
       >
         <div className="flex items-center gap-2.5 min-w-[110px]">
           <img src={coin.image} alt={coin.name} className="w-9 h-9 rounded-full object-cover" />

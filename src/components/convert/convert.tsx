@@ -131,14 +131,11 @@ export default function ConvertFunds() {
     amount: 0,
     currentPrice: c.current_price,
   }))
-
   const fromAmount = parseFloat(amount || '0')
   const fromValue = fromAmount * (fromAsset?.currentPrice ?? 0) 
   const toAmount = toAsset ? fromValue / toAsset.currentPrice : 0 
-
   const maxAmount = fromAsset?.amount ?? 0
-  const insufficient = fromAmount > maxAmount
-
+  const insufficient = fromAmount > maxAmount + 1e-10
   const handleConvert = () => {
     if (!fromAsset || !toAsset || fromAmount <= 0 || insufficient) return
     if (fromAsset.coinId === 'tether') {
@@ -167,39 +164,21 @@ export default function ConvertFunds() {
     setAmount('')
     setTimeout(() => setSuccess(false), 3000)
   }
-
   return (
     <div className="px-4 py-6">
       <div className="bg-[#131a34] border border-[#407fb0]/30 rounded-2xl px-4 py-5 space-y-5">
-
-        {/* from */}
-        <CoinDropdown
-          label="Convert From"
-          selected={fromAsset}
-          options={ownedAssets}
-          onSelect={(a) => { setFromAsset(a); setAmount('') }}
-        />
-
-        {/* amount input */}
+        <CoinDropdown label="Convert From" selected={fromAsset} options={ownedAssets} onSelect={(a) => { setFromAsset(a); setAmount('') }}/>
         {fromAsset && (
           <div>
             <p className="text-xs text-[#407fb0] font-medium mb-2">Amount</p>
             <div className="bg-[#1a2240] border border-[#407fb0]/20 rounded-xl px-4 py-3">
-              <input
-                type="number"
-                placeholder="0.00"
-                value={amount}
-                onChange={e => setAmount(e.target.value)}
-                className="w-full bg-transparent text-white text-xl font-semibold outline-none placeholder:text-white/20"
+              <input type="number" placeholder="0.00" value={amount} onChange={e => setAmount(e.target.value)} className="w-full bg-transparent text-white text-xl font-semibold outline-none placeholder:text-white/20"
               />
               <div className="flex justify-between items-center mt-1">
                 <p className="text-[11px] text-white/40">
                   ≈ ${fromValue.toLocaleString(undefined, { maximumFractionDigits: 2 })}
                 </p>
-                <button
-                  onClick={() => setAmount(maxAmount.toFixed(6))}
-                  className="text-[11px] text-[#4a9fd4]"
-                >
+                <button onClick={() => setAmount(String(maxAmount))}className="text-[11px] text-[#4a9fd4]">
                   Max: {maxAmount.toFixed(fromAsset.coinId === 'tether' ? 2 : 6)} {fromAsset.symbol.toUpperCase()}
                 </button>
               </div>
@@ -209,11 +188,8 @@ export default function ConvertFunds() {
             )}
           </div>
         )}
-
-        {/* swap arrow */}
         <div className="flex justify-center">
-          <button
-            onClick={() => {
+          <button onClick={() => {
               if (fromAsset && toAsset) {
                 const temp = fromAsset
                 setFromAsset(toAsset)
@@ -231,16 +207,7 @@ export default function ConvertFunds() {
             </svg>
           </button>
         </div>
-
-        {/* to */}
-        <CoinDropdown
-          label="Convert To"
-          selected={toAsset}
-          options={allCoins.filter(c => c.coinId !== fromAsset?.coinId)}
-          onSelect={setToAsset}
-        />
-
-        {/* you receive */}
+        <CoinDropdown label="Convert To" selected={toAsset} options={allCoins.filter(c => c.coinId !== fromAsset?.coinId)} onSelect={setToAsset}/>
         {toAsset && fromAmount > 0 && (
           <div className="bg-[#1a2240] border border-[#407fb0]/20 rounded-xl px-4 py-3">
             <p className="text-xs text-white/40 mb-1">You receive</p>
@@ -259,7 +226,7 @@ export default function ConvertFunds() {
           disabled={!fromAsset || !toAsset || fromAmount <= 0 || insufficient}
           className="w-full bg-[#1a6ee8] text-white font-semibold py-4 rounded-2xl active:opacity-80 disabled:opacity-40 disabled:cursor-not-allowed"
         >
-          {success ? '✅ Converted!' : `Convert ${fromAsset?.symbol.toUpperCase() ?? ''}`}
+          {success ? 'Converted!' : `Convert ${fromAsset?.symbol.toUpperCase() ?? ''}`}
         </button>
 
       </div>

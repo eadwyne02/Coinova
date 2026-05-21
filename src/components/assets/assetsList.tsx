@@ -24,11 +24,12 @@ export default function AssetsPage() {
       return { ...item, currentPrice, currentValue, pnl, pnlPct }
     })
 
-  const totalValue = holdings.reduce((acc, h) => acc + h.currentValue, 0) + usdtValue
+  // const totalValue = holdings.reduce((acc, h) => acc + h.currentValue, 0) + usdtValue
 
   return (
     <div className="px-4 py-6">
-      <h2 className="text-base font-bold text-white text-xl font-jakarta mb-1">My Assets</h2>
+      <h2 className="text-base font-bold text-white font-jakarta mb-1">My Assets</h2>
+  
       <div className="flex items-center justify-between py-3.5 border-b border-white/[0.06]">
         <div className="flex items-center gap-2.5">
           <img
@@ -57,7 +58,7 @@ export default function AssetsPage() {
             <img src={item.image} alt={item.name} className="w-9 h-9 rounded-full" />
             <div>
               <p className="text-sm font-semibold text-white">{item.symbol.toUpperCase()}</p>
-              <p className="text-[11px] text-white/45">{item.amount} coins</p>
+              <p className="text-[11px] text-white/45">{item.amount.toFixed(7)} coins</p>
             </div>
           </div>
           <div className="text-right">

@@ -6,8 +6,10 @@ import MarketOverview from "./pages/marketOverview";
 import TransactionHistory from "./pages/transactionHistory";
 import Assets from "./pages/assets";
 import Convert from "./pages/convert";
-// import Header from "./components/header/homeHeader";
+import Deposit from "./pages/deposit";
+import SellCrypto from "./pages/sellCrypto";
 import SplashScreen from "./components/SplashScreen";
+import SendCrypto from "./pages/sendCrypto";
 // import Settings from "./pages/settings";
 
 function App(){
@@ -16,13 +18,15 @@ function App(){
  return (
     <div>
       <div className="mb-13">
-       
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/market" element={<MarketOverview />} />
             <Route path="/history" element={<TransactionHistory />}/>
             <Route path="/assets" element={<Assets />}/>
             <Route path="/convert" element={<Convert />}/>
+            <Route path="/deposit" element = {<Deposit />}/>
+            <Route path="/sell" element={<SellCrypto />} />
+            <Route path="/send" element={<SendCrypto />} />
           </Routes>
 
       </div>
