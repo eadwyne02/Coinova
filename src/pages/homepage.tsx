@@ -4,11 +4,16 @@ import Portfolio from '../components/Portfolio'
 import News from '../components/News'
 import Header from '../components/header/homeHeader'
 import HomeTransaction from '../components/homeTransaction'
+import { useState } from 'react'
+import Sidebar from '../components/sidebar'
 
 export default function HomePage(){
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false)
     return(
         <div >
-           <Header />
+            <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
+            <Header onAvatarClick={() => setIsSidebarOpen(prev => !prev)}  />
+            
            <div className="pt-30 min-h-screen bg-[#121621] pt-2">
             <div className='relative z-10 '>
                 <div className="mx-5 rounded-[24px] overflow-hidden relative border border-white/[0.07]" style={{ background: 'linear-gradient(135deg, #0c1f3f, #0a1630, #071020)' }}>

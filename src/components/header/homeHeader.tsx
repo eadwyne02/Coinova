@@ -26,7 +26,7 @@ function getGreeting() {
   return 'Good evening'
 }
 
-function Header() {
+function Header({onAvatarClick}: {onAvatarClick: () => void}) {
   const tickerRef = useRef<HTMLDivElement>(null)
   const [hasNotif, setHasNotif] = useState(true)
 
@@ -53,10 +53,10 @@ function Header() {
     <div className="fixed top-0 left-0 right-0 z-50 bg-[#121621]">
       <div className="flex items-center justify-between pr-4 pl-3 pt-4 pb-3">
         <div className='flex items-center gap-1'>
-          <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=John" alt="Avatar" className="w-9 h-9 rounded-full" />
+          <img onClick={onAvatarClick} style={{cursor:'pointer'}} src="https://api.dicebear.com/7.x/avataaars/svg?seed=John" alt="Avatar" className="w-9 h-9 rounded-full" />
           <div className="flex flex-col gap-0.5">
             <span className="text-[14px] text-white/40 font-inter font-normal">
-              {getGreeting()} 👋
+              {getGreeting()}
             </span>
             <span className="text-[16px] font-jakarta font-bold text-white leading-tight">
               Anonymous

@@ -10,7 +10,7 @@ import Deposit from "./pages/deposit";
 import SellCrypto from "./pages/sellCrypto";
 import SplashScreen from "./components/SplashScreen";
 import SendCrypto from "./pages/sendCrypto";
-// import Settings from "./pages/settings";
+import Settings from "./pages/settings";
 
 function App(){
   const [loading, setLoading] = useState(true)
@@ -27,6 +27,7 @@ function App(){
             <Route path="/deposit" element = {<Deposit />}/>
             <Route path="/sell" element={<SellCrypto />} />
             <Route path="/send" element={<SendCrypto />} />
+            <Route path="/setting" element={<Settings />} />
           </Routes>
 
       </div>
