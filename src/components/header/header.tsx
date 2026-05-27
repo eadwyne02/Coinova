@@ -1,9 +1,10 @@
-import { useState } from 'react'
+import { useState, } from 'react'
 import logo from '../../assets/coinova-logo.webp'
+import { useNavigate } from 'react-router-dom'
 
 function Header() {
   const [hasNotif, setHasNotif] = useState(true)
-
+  const navigate = useNavigate()
   return (
     <div className=" bg-[#121621]">
       <div className="flex items-center justify-between px-4 pt-4 pb-3">
@@ -14,11 +15,7 @@ function Header() {
             <span className="bg-gradient-to-b from-[#8f37f7] via-[#6b5cf7] to-[#0d82ec] bg-clip-text text-transparent">OVA</span>
           </span>
         </div>
-        <button
-          onClick={() => setHasNotif(false)}
-          className="relative w-[34px] h-[34px] rounded-full border border-white/10 bg-white/[0.05] flex items-center justify-center"
-          aria-label="Notifications"
-        >
+        <button onClick={() => {setHasNotif(false); navigate("/notification");} } className="relative w-[34px] h-[34px] rounded-full border border-white/10 bg-white/[0.05] flex items-center justify-center" aria-label="Notifications">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none"
             stroke="rgba(255,255,255,0.65)" strokeWidth="1.5"
             strokeLinecap="round" strokeLinejoin="round">

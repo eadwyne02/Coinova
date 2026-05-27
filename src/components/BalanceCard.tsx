@@ -33,10 +33,10 @@ export default function BalanceCard() {
             </svg>
         </div>
         <div className="flex flex-col items-center gap-1 text-center px-4">
-            <p className="text-white/60 text-sm font-medium">Something went wrong</p>
-            <p className="text-white/30 text-xs">{coinsError}</p>
+            <p className="text-white/60 text-sm md:text-[15px] font-medium">Something went wrong</p>
+            <p className="text-white/30 text-xs md:text-sm">{coinsError}</p>
         </div>
-        <button onClick={retry} className="flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-2">
+        <button onClick={retry} className="flex items-center mb-15 gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-2">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <polyline points="23 4 23 10 17 10"/>
             <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
@@ -69,7 +69,7 @@ export default function BalanceCard() {
             )}
           </button>
         </div>
-        <p className="text-[11px] text-white/28 mb-1.5 tracking-wide">Total Portfolio Value</p>
+        <p className="text-[11px] md:text-[12px] text-white/28 mb-1.5 tracking-wide">Total Portfolio Value</p>
         <div className="flex items-end justify-between gap-3 mb-2.5">
           <p className={`${fontSize} font-bold text-white tracking-[-1.5px] leading-none font-jakarta`}>
             {showBalance ? `${currency.symbol} ${formattedValue}` : '*****'}

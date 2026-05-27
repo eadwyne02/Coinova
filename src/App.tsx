@@ -11,13 +11,18 @@ import SellCrypto from "./pages/sellCrypto";
 import SplashScreen from "./components/SplashScreen";
 import SendCrypto from "./pages/sendCrypto";
 import Settings from "./pages/settings";
+import Notifications from "./pages/notification";
+import LgSidebar from "./components/lgSidebar";
 
 function App(){
   const [loading, setLoading] = useState(true)
   if (loading) return <SplashScreen onFinish={() => setLoading(false)} />
  return (
-    <div>
-      <div className="mb-13">
+    <div className="">
+      <div className="hidden top-0 left-0 fixed z-200 lg:block">
+       <LgSidebar /> 
+      </div>
+      <div className="flex-1 lg:ml-64 mb-13 lg:mb-0">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/market" element={<MarketOverview />} />
@@ -28,12 +33,15 @@ function App(){
             <Route path="/sell" element={<SellCrypto />} />
             <Route path="/send" element={<SendCrypto />} />
             <Route path="/setting" element={<Settings />} />
+            <Route path="/notification" element={<Notifications />} />
+
           </Routes>
 
       </div>
-      <div className="fixed bottom-0 left-0 right-0 z-50">
+      <div className="fixed bottom-0 left-0 right-0 z-50 lg:hidden">
         <BottomNav />
       </div>
+      
     </div>
   )
 }

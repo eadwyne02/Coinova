@@ -8,7 +8,7 @@ function Transaction(){
                         <polyline points="19 12 12 19 5 12"/>
                     </svg>
                 </div>
-                <p className="text-md text-white/60 text-sans">Deposit</p>
+                <p className="text-md  md:text-[18px] text-white/60 text-sans">Deposit</p>
             </button>
             <button className="flex flex-col items-center">
                 <div className="bg-[#0f4963] flex justify-center items-center h-14 w-14 rounded-full items-center">
@@ -17,7 +17,7 @@ function Transaction(){
                         <polyline points="5 12 12 5 19 12"/>
                     </svg>
                 </div>
-                <p className="text-md text-white/60 text-sans">Withdraw</p>
+                <p className="text-md md:text-[18px] text-white/60 text-sans">Withdraw</p>
             </button>
             <button className="flex flex-col items-center">
                 <div className="bg-[#0f4963] flex justify-center items-center h-14 w-14 rounded-full items-center">
@@ -28,7 +28,7 @@ function Transaction(){
                         <line x1="21" y1="16" x2="3" y2="16"/>
                     </svg>
                 </div>
-                <p className="text-md text-white/60 text-sans">Convert</p>
+                <p className="text-md  md:text-[18px] text-white/60 text-sans">Convert</p>
             </button>
         </div>
     )

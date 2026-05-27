@@ -4,9 +4,9 @@ import { useNavigate } from 'react-router-dom';
 export default function Sidebar({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
     const navigate = useNavigate()
     return (
-        <div className={`fixed inset-0 top-0 left-0 h-full w-[75%] max-w-[300px] p-4 bg-[#0f1724] z-[200] transition-transform duration-300 ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+        <div className={`fixed inset-0 top-0 left-0 h-full w-[75%] max-w-[400px] p-4 bg-[#0f1724] z-[200] transition-transform duration-300 ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
             <div className="flex justify-end mb-4">
-                <button onClick={onClose} className="bg-white/[0.07] text-white/50 w-8 h-8 rounded-full flex items-center justify-center text-sm hover:bg-white/10 transition-colors">✕</button>
+                <button onClick={onClose} className="bg-white/[0.07] text-white/50 w-8 h-8 md:h-10 md:w-10 rounded-full flex items-center justify-center text-sm md:text-lg hover:bg-white/10 transition-colors">✕</button>
             </div>
             <div className="relative rounded-2xl p-5 border border-white/[0.07] bg-[#131e30] overflow-hidden mb-5">
                 <div className="absolute -top-8 -right-8 w-40 h-40 rounded-full bg-[#1565d8]/20 pointer-events-none" />
@@ -19,19 +19,19 @@ export default function Sidebar({ isOpen, onClose }: { isOpen: boolean; onClose:
                         </div>
                         <span className="absolute bottom-0.5 right-0.5 w-3 h-3 rounded-full bg-green-500 border-2 border-[#131e30]" />
                     </div>
-                    <p className="text-white/90 font-semibold text-[15px] tracking-wide">Anonymous A.</p>
-                    <p className="text-white/40 text-xs mb-3">anonymous@gmail.com</p>
+                    <p className="text-white/90 font-semibold text-[15px] tracking-wide md:text-[17px]">Anonymous A.</p>
+                    <p className="text-white/40 text-xs  md:text-sm mb-3">anonymous@gmail.com</p>
                     <div className="flex items-center gap-1.5 bg-green-500/10 border border-green-500/25 rounded-full px-3 py-1">
                         <svg width="11" height="13" viewBox="0 0 160 185" xmlns="http://www.w3.org/2000/svg">
                             <path d="M80 0 L155 28 L155 100 C155 148 80 185 80 185 C80 185 5 148 5 100 L5 28 Z" fill="#22c55e" stroke="#16a34a" stroke-width="6"/>
                             <polyline points="45,95 68,120 115,72" fill="none" stroke="white" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
-                        <span className="text-green-400 text-xs font-medium">Verified account</span>
+                        <span className="text-green-400 text-xs  md:text-sm font-medium">Verified account</span>
                     </div>
                 </div>
             </div>
             <div className="mb-5">
-                <p className="uppercase text-white/25 text-[10px] font-semibold tracking-[1.5px] px-1 mb-2">Account & Security</p>
+                <p className="uppercase text-white/25 text-[10px]  md:text-[15px] font-semibold tracking-[1.5px] px-1 mb-2">Account & Security</p>
                 <div className="flex flex-col gap-1">
                     <div className="flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-white/[0.04] cursor-pointer transition-colors">
                         <div className="flex items-center gap-3">
@@ -42,8 +42,8 @@ export default function Sidebar({ isOpen, onClose }: { isOpen: boolean; onClose:
                                 </svg>
                             </div>
                             <div>
-                                <p className="text-white/85 text-sm font-medium">Profile Details</p>
-                                <p className="text-white/35 text-xs">Name, phone, address</p>
+                                <p className="text-white/85 text-sm md:text-[16px] font-medium">Profile Details</p>
+                                <p className="text-white/35 text-xs  md:text-sm">Name, phone, address</p>
                             </div>
                         </div>
                         <div className="flex items-center gap-2">
@@ -66,9 +66,9 @@ export default function Sidebar({ isOpen, onClose }: { isOpen: boolean; onClose:
                                 </svg>
                             </div>
                             <div>
-                                <p className="text-white/85 text-sm font-medium">Identity Verification</p>
+                                <p className="text-white/85 text-sm md:text-[16px] font-medium">Identity Verification</p>
                                 <div className="bg-[#1e3c34] w-fit px-2 py-[1px] rounded-full mt-0.5">
-                                    <p className="text-[#4ade80] text-[10px] font-medium">Verified</p>
+                                    <p className="text-[#4ade80] text-[10px] md:text-[12px] font-medium">Verified</p>
                                 </div>
                             </div>
                         </div>
@@ -83,8 +83,8 @@ export default function Sidebar({ isOpen, onClose }: { isOpen: boolean; onClose:
                                 </svg>
                             </div>
                             <div>
-                                <p className="text-white/85 text-sm font-medium">Account Settings</p>
-                                <p className="text-white/35 text-xs">Preferences, security</p>
+                                <p className="text-white/85 text-sm font-medium md:text-[16px]">Account Settings</p>
+                                <p className="text-white/35 text-xs md:text-sm">Preferences, security</p>
                             </div>
                         </div>
                         <span className="text-white/20 text-base">›</span>
@@ -93,7 +93,7 @@ export default function Sidebar({ isOpen, onClose }: { isOpen: boolean; onClose:
             </div>
             <div className="h-px bg-white/[0.05] mb-5" />
             <div className="mb-5">
-                <p className="uppercase text-white/25 text-[10px] font-semibold tracking-[1.5px] px-1 mb-2">Support & System</p>
+                <p className="uppercase text-white/25 text-[10px] font-semibold tracking-[1.5px] px-1 mb-2 md:text-[15px]">Support & System</p>
                 <div className="flex flex-col gap-1">
                     <div className="flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-white/[0.04] cursor-pointer transition-colors">
                         <div className="flex items-center gap-3">
@@ -105,8 +105,8 @@ export default function Sidebar({ isOpen, onClose }: { isOpen: boolean; onClose:
                                 </svg>
                             </div>
                             <div>
-                                <p className="text-white/85 text-sm font-medium">Help Center</p>
-                                <p className="text-white/35 text-xs">FAQs, contact support</p>
+                                <p className="text-white/85 text-sm md:text-[16px] font-medium">Help Center</p>
+                                <p className="text-white/35 text-xs  md:text-sm">FAQs, contact support</p>
                             </div>
                         </div>
                         <span className="text-white/20 text-base">›</span>
@@ -117,8 +117,8 @@ export default function Sidebar({ isOpen, onClose }: { isOpen: boolean; onClose:
                                 <img src={logo} alt="CoinOva" className="w-7 h-7 object-contain" />
                             </div>
                             <div>
-                                <p className="text-white/85 text-sm font-medium">About CoinOva</p>
-                                <p className="text-white/35 text-xs">Version, changelog</p>
+                                <p className="text-white/85 md:text-[16px] text-sm font-medium">About CoinOva</p>
+                                <p className="text-white/35 md:text-sm text-xs">Version, changelog</p>
                             </div>
                         </div>
                         <span className="text-white/20 text-base">›</span>
@@ -137,8 +137,8 @@ export default function Sidebar({ isOpen, onClose }: { isOpen: boolean; onClose:
                                 </svg>
                             </div>
                             <div>
-                                <p className="text-white/85 text-sm font-medium">Legal & Privacy</p>
-                                <p className="text-white/35 text-xs">Terms, data policy</p>
+                                <p className="text-white/85 text-sm md:text-[16px] font-medium">Legal & Privacy</p>
+                                <p className="text-white/35 md:text-sm text-xs">Terms, data policy</p>
                             </div>
                         </div>
                         <span className="text-white/20 text-base">›</span>
@@ -146,16 +146,7 @@ export default function Sidebar({ isOpen, onClose }: { isOpen: boolean; onClose:
                 </div>
             </div>
             <div className="h-px bg-white/[0.05] mb-4" />
-            <div className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-red-500/[0.06] cursor-pointer transition-colors">
-                <div className="w-9 h-9 rounded-[10px] bg-red-500/[0.08] flex items-center justify-center shrink-0">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
-                        <polyline points="16 17 21 12 16 7"/>
-                        <line x1="21" y1="12" x2="9" y2="12"/>
-                    </svg>
-                </div>
-                <span className="text-red-400 text-sm font-medium">Log out</span>
-            </div>
+            
 
         </div>
     )

@@ -30,18 +30,18 @@ function CoinDropdown({
 
   return (
     <div className="relative">
-      <p className="text-sm text-[#407fb0] font-medium mb-2">{label}</p>
+      <p className="text-sm md:text-[15px] text-[#407fb0] font-medium mb-2">{label}</p>
       <button onClick={() => setOpen(!open)} className="w-full bg-[#1a2240] border border-[#407fb0]/30 rounded-xl px-4 py-3 flex items-center justify-between">
         {selected ? (
           <div className="flex items-center gap-2.5">
-            <img src={selected.image} alt={selected.name} className="w-7 h-7 rounded-full" />
+            <img src={selected.image} alt={selected.name} className="w-7 h-7 md:w-9 md:h-9 rounded-full" />
             <div className="text-left">
-              <p className="text-sm font-semibold text-white">{selected.symbol.toUpperCase()}</p>
-              <p className="text-[10px] text-white/40">{selected.name}</p>
+              <p className="text-sm md:text-[15px] font-semibold text-white">{selected.symbol.toUpperCase()}</p>
+              <p className="text-[10px] md:text-[13px] text-white/40">{selected.name}</p>
             </div>
           </div>
         ) : (
-          <p className="text-white/40 text-sm">Select coin</p>
+          <p className="text-white/40 text-sm md:text-[15px]">Select coin</p>
         )}
         <svg width="20" height="20" viewBox="0 0 24 24" fill="#9096a0" stroke="none">
           <path d="M6 9l6 6 6-6z" />
@@ -50,14 +50,9 @@ function CoinDropdown({
       {open && (
         <div className="absolute top-full left-0 right-0 z-50 mt-1 bg-[#181e27] rounded-2xl overflow-hidden shadow-xl border border-white/[0.06] max-h-48 overflow-y-auto">
           {options.map((asset, i) => (
-            <button
-              key={asset.coinId}
-              onClick={() => { onSelect(asset); setOpen(false) }}
-              className={`w-full flex items-center justify-between px-4 py-3 hover:bg-white/5 transition-all
-                ${i !== options.length - 1 ? 'border-b border-white/[0.06]' : ''}`}
-            >
+            <button key={asset.coinId} onClick={() => { onSelect(asset); setOpen(false) }} className={`w-full flex items-center justify-between px-4 py-3 hover:bg-white/5 transition-all ${i !== options.length - 1 ? 'border-b border-white/[0.06]' : ''}`}>
               <div className="flex items-center gap-2.5">
-                <img src={asset.image} alt={asset.name} className="w-7 h-7 rounded-full" />
+                <img src={asset.image} alt={asset.name} className="w-7 h-7 md:w-9 md:h-9 rounded-full" />
                 <div className="text-left">
                   <p className="text-sm font-semibold text-white">{asset.symbol.toUpperCase()}</p>
                   <p className="text-[10px] text-white/40">{asset.name}</p>
@@ -170,21 +165,20 @@ export default function ConvertFunds() {
         <CoinDropdown label="Convert From" selected={fromAsset} options={ownedAssets} onSelect={(a) => { setFromAsset(a); setAmount('') }}/>
         {fromAsset && (
           <div>
-            <p className="text-xs text-[#407fb0] font-medium mb-2">Amount</p>
+            <p className="text-xs text-[#407fb0] md:text-sm font-medium mb-2">Amount</p>
             <div className="bg-[#1a2240] border border-[#407fb0]/20 rounded-xl px-4 py-3">
-              <input type="number" placeholder="0.00" value={amount} onChange={e => setAmount(e.target.value)} className="w-full bg-transparent text-white text-xl font-semibold outline-none placeholder:text-white/20"
-              />
+              <input type="number" placeholder="0.00" value={amount} onChange={e => setAmount(e.target.value)} className="w-full bg-transparent text-white text-xl font-semibold outline-none placeholder:text-white/20"/>
               <div className="flex justify-between items-center mt-1">
-                <p className="text-[11px] text-white/40">
+                <p className="text-[11px] md:text-[13px] text-white/40">
                   ≈ ${fromValue.toLocaleString(undefined, { maximumFractionDigits: 2 })}
                 </p>
-                <button onClick={() => setAmount(String(maxAmount))}className="text-[11px] text-[#4a9fd4]">
+                <button onClick={() => setAmount(String(maxAmount))}className="text-[11px] md:text-[13px] text-[#4a9fd4]">
                   Max: {maxAmount.toFixed(fromAsset.coinId === 'tether' ? 2 : 6)} {fromAsset.symbol.toUpperCase()}
                 </button>
               </div>
             </div>
             {insufficient && (
-              <p className="text-red-400 text-xs mt-1 px-1">Insufficient balance</p>
+              <p className="text-red-400 text-xs mt-1 px-1 md:text-sm">Insufficient balance</p>
             )}
           </div>
         )}

@@ -50,7 +50,7 @@ function AssetsBalanceCard() {
         <div>
             <div className="flex flex-col gap-4">
                 <div className="flex gap-3">
-                    <p className="text-white/50 text-sm font-medium">Total Assets</p>
+                    <p className="text-white/50 text-sm font-medium md:text-[16px]">Total Assets</p>
                     <button onClick={()=>{setShowBalance(!showBalance)}}>
                         {showBalance ? (
                             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"
@@ -68,18 +68,17 @@ function AssetsBalanceCard() {
                                 <line x1="1" y1="1" x2="23" y2="23"/>
                             </svg>
                         )}
-                    </button>
-                    
+                    </button> 
                 </div>
                 <div>
-                   <div className="flex gap-2 items-end relative">
-                        <p className="text-3xl tracking-tight font-medium font-jakarta text-white/90">
+                   <div className="flex  gap-2 items-end relative">
+                        <p className="text-3xl md:text-4xl  tracking-tight font-medium font-jakarta text-white/90">
                             {showBalance
                             ? `${currency.symbol} ${totalValue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
                             : '*****'}
                         </p>
                         <button className="flex items-end" onClick={() => setShowCurrencyPicker(!showCurrencyPicker)}>
-                            <p className="text-white/60 font-medium text-sm">{currency.code.toUpperCase()}</p>
+                            <p className="text-white/60 font-medium text-sm md:text-[16px]">{currency.code.toUpperCase()}</p>
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="#9096a0" stroke="none">
                             <path d="M6 9l6 6 6-6z" />
                             </svg>
@@ -113,7 +112,7 @@ function AssetsBalanceCard() {
                                 <path d="M5 9 Q8 6 12 9 Q16 12 19 9"/>
                                 <path d="M5 15 Q8 12 12 15 Q16 18 19 15"/>
                             </svg>
-                            <p className="text-[#9096a0] text-sm">{showBalance ? `${totalInBtc.toFixed(6)} BTC`: '*****'}</p>
+                            <p className="text-[#9096a0] text-sm md:text-[16px]">{showBalance ? `${totalInBtc.toFixed(6)} BTC`: '*****'}</p>
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9096a0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="12" cy="12" r="10"/>
                                 <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
@@ -131,8 +130,8 @@ function AssetsBalanceCard() {
                             )}
                     </div>
                     <div className="flex gap-2 mt-2">
-                        <p className="text-[#9096a0] text-sm">Today's P&L</p>
-                        <button className={`text-sm ${pnlConverted >= 0 ? 'text-[#00a9f9]' : 'text-red-400'}`}>
+                        <p className="text-[#9096a0] text-sm md:text-[16px]">Today's P&L</p>
+                        <button className={`text-sm md:text-[16px] ${pnlConverted >= 0 ? 'text-[#00a9f9]' : 'text-red-400'}`}>
                             {showBalance
                                 ? `${pnlConverted >= 0 ? '+' : ''}${currency.symbol}${Math.abs(pnlConverted).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} (${pnlConverted >= 0 ? '+' : ''}${pnlPct.toFixed(2)}%)`
                                 : '*****'
@@ -142,18 +141,18 @@ function AssetsBalanceCard() {
                     <div className="h-px opacity-40 w-full bg-[#9096a0] my-2"></div>
                     <div className="flex gap-20">
                         <div>
-                            <p className="text-[#9096a0]">Available balance</p>
+                            <p className="text-[#9096a0] md:text-[16px]">Available balance</p>
                             <div className=" flex gap-1 items-center">
-                                <p className="text-[#9096a0]">{currency.symbol}</p> 
-                                <p className="font-medium text-white/70 text-medium">{showBalance ? totalValue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : "*****"}</p>
+                                <p className="text-[#9096a0] md:text-[16px]">{currency.symbol}</p> 
+                                <p className="font-medium text-white/70 text-medium md:text-[17px]">{showBalance ? totalValue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : "*****"}</p>
                                 
                             </div>
                         </div>
                         <div>
-                            <p className="text-[#9096a0]">In Use</p>
+                            <p className="text-[#9096a0] md:text-[17px]">In Use</p>
                             <div className="flex items-end gap-1">
-                                <p className="text-[#9096a0]">{currency.symbol}</p> 
-                                <p className="font-medium text-white/70 text-medium">{showBalance ? 0.00 : "*****"}</p>
+                                <p className="text-[#9096a0]  md:text-[17px]">{currency.symbol}</p> 
+                                <p className="font-medium text-white/70 text-medium  md:text-[17px]">{showBalance ? 0.00 : "*****"}</p>
                             </div>
                         </div>
                     </div>

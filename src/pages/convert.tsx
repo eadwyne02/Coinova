@@ -6,7 +6,7 @@ function Convert(){
         <div>
             <Header />
             <div className="bg-[#141720] min-h-screen">
-                <p className="text-white/80 pt-5 ml-5 text-2xl font-bold font-jakarta">Convert</p>
+                <p className="text-white/80 pt-5 ml-5 text-2xl font-bold font-jakarta ">Convert</p>
                 <div>
                     <ConvertFunds />
                 </div>

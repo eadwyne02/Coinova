@@ -1,6 +1,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import logo from '../../assets/coinova-logo.webp'
+import { useNavigate } from 'react-router-dom'
 
 type TickerCoin = {
   symbol: string
@@ -48,27 +49,23 @@ function Header({onAvatarClick}: {onAvatarClick: () => void}) {
     frame = requestAnimationFrame(tick)
     return () => cancelAnimationFrame(frame)
   }, [])
-
+  const navigate = useNavigate()
   return (
     <div className="fixed top-0 left-0 right-0 z-50 bg-[#121621]">
-      <div className="flex items-center justify-between pr-4 pl-3 pt-4 pb-3">
-        <div className='flex items-center gap-1'>
-          <img onClick={onAvatarClick} style={{cursor:'pointer'}} src="https://api.dicebear.com/7.x/avataaars/svg?seed=John" alt="Avatar" className="w-9 h-9 rounded-full" />
+      <div className="flex items-center justify-between pr-4 pl-3 pt-4 pb-3 lg:justify-end">
+        <div className='flex items-center gap-1 lg:hidden'>
+          <img onClick={onAvatarClick} style={{cursor:'pointer'}} src="https://api.dicebear.com/7.x/avataaars/svg?seed=John" alt="Avatar" className="w-9 h-9 md:w-10 md:h-10 rounded-full" />
           <div className="flex flex-col gap-0.5">
-            <span className="text-[14px] text-white/40 font-inter font-normal">
+            <span className="text-[14px] text-white/40 font-inter font-normal md:text-[16px]">
               {getGreeting()}
             </span>
-            <span className="text-[16px] font-jakarta font-bold text-white leading-tight">
+            <span className="text-[16px] font-jakarta font-bold text-white leading-tight md:text-[18px]">
               Anonymous
             </span>
           </div>
         </div>
         <div className="flex items-center gap-2.5">
-          <button
-            onClick={() => setHasNotif(false)}
-            className="relative w-[34px] h-[34px] rounded-full border border-white/10 bg-white/[0.05] flex items-center justify-center"
-            aria-label="Notifications"
-          >
+          <button onClick={() => {setHasNotif(false); navigate("/notification");}} className="relative w-[34px] h-[34px] rounded-full border border-white/10 bg-white/[0.05] flex items-center justify-center" aria-label="Notifications">
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none"
               stroke="rgba(255,255,255,0.65)" strokeWidth="1.5"
               strokeLinecap="round" strokeLinejoin="round">
@@ -81,14 +78,8 @@ function Header({onAvatarClick}: {onAvatarClick: () => void}) {
           </button>
 
           <div className="flex items-center gap-1.5 bg-[#6b5cf7]/10 border border-[#6b5cf7]/25 rounded-full py-[5px] pl-[5px] pr-[10px]">
-            <img
-              src={logo}
-              alt="Coinova"
-              className="w-[22px] h-[22px] rounded-full object-cover"
-            />
-            <span
-              className="text-[12px] font-jakarta font-bold tracking-[1.5px] bg-gradient-to-r from-[#8f37f7] via-[#6b5cf7] to-[#0d82ec] bg-clip-text text-transparent"
-            >
+            <img src={logo} alt="Coinova" className="w-[22px] h-[22px] rounded-full object-cover" />
+            <span className="text-[12px] md:text-[14px] font-jakarta font-bold tracking-[1.5px] bg-gradient-to-r from-[#8f37f7] via-[#6b5cf7] to-[#0d82ec] bg-clip-text text-transparent">
               COINOVA
             </span>
           </div>
@@ -99,13 +90,13 @@ function Header({onAvatarClick}: {onAvatarClick: () => void}) {
         <div className="flex py-[7px]" style={{ width: 'max-content' }} ref={tickerRef}>
           {[...TICKER_COINS, ...TICKER_COINS].map((coin, i) => (
             <div key={i} className="flex items-center gap-1.5 px-4 border-r border-white/[0.06] last:border-none shrink-0">
-              <span className="text-[11px] font-medium text-white/45 font-jakarta">
+              <span className="text-[11px] md:text-[13px] font-medium text-white/45 font-jakarta">
                 {coin.symbol}
               </span>
-              <span className="text-[11px] font-semibold text-white font-jakarta">
+              <span className="text-[11px] md:text-[13px] font-semibold text-white font-jakarta">
                 {coin.price}
               </span>
-              <span className={`text-[10px] font-semibold font-jakarta ${coin.change >= 0 ? 'text-green-400' : 'text-red-400'}`}>
+              <span className={`text-[10px] md:text-[12px] font-semibold font-jakarta ${coin.change >= 0 ? 'text-green-400' : 'text-red-400'}`}>
                 {coin.change >= 0 ? '+' : ''}{coin.change.toFixed(1)}%
               </span>
             </div>

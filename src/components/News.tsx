@@ -41,22 +41,16 @@ const articles = [
 export default function NewsSection() {
   return (
     <div className="px-4 py-6">
-
-      {/* articles */}
       <div>
         {articles.map((article, i) => (
-          <div
-            key={i}
-            className="flex items-center gap-3 py-3.5 border-b border-white/[0.06] last:border-none"
-          >
-            {/* text */}
+          <div key={i} className="flex items-center gap-3 py-3.5 border-b border-white/[0.06] last:border-none">
             <div className="flex-1 flex flex-col gap-2">
-              <p className="text-[13px] font-medium text-white/85 leading-snug">
+              <p className="text-[13px] md:text-[14px] font-medium text-white/85 leading-snug">
                 {article.title}
               </p>
               <div className="flex items-center gap-2.5">
-                <span className="text-[11px] text-white/35">{article.time}</span>
-                <span className="text-[11px] font-semibold text-[#4a9fd4]">
+                <span className="text-[12px] font-semibold text-[#4a9fd4] flex gap-1.5">
+                <span className="text-[12px] text-white/35">{article.time}</span>
                   {article.source}
                 </span>
                 <div className="flex items-center gap-1.5">
@@ -64,12 +58,10 @@ export default function NewsSection() {
                     className="w-1.5 h-1.5 rounded-full flex-shrink-0"
                     style={{ background: article.dotColor }}
                   />
-                  <span className="text-[11px] text-white/45">{article.tag}</span>
+                  <span className="text-[11px] md:text-[12px] text-white/45">{article.tag}</span>
                 </div>
               </div>
             </div>
-
-            {/* thumbnail */}
             <img
               src={article.image}
               alt={article.title}
