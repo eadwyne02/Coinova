@@ -1,7 +1,6 @@
 import { useState, useMemo } from 'react'
 import { useCoinList } from '../hooks/useCoinList'
 import MiniChart from '../components/portfolio/MiniChart'
-import Header from '../components/header/header'
 
 type FilterType = 'all' | 'gainers' | 'losers' | 'top_volume' | 'top_cap'
 
