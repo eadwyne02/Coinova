@@ -6,15 +6,12 @@ export function useCoinList(limit?: number , vsCurrency = 'usd') {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
-
   const fetchCoins = async () => {
     setError(null)
-
     timeoutRef.current = setTimeout(() => {
       setLoading(false)
       setError('Request timed out. Check your connection and try again.')
     }, 25000)
-
     try {
       const data = await getCoinList(vsCurrency)
       clearTimeout(timeoutRef.current)
@@ -27,7 +24,6 @@ export function useCoinList(limit?: number , vsCurrency = 'usd') {
       console.error('fetch error', err)
     }
   }
-
  useEffect(() => {
     fetchCoins()
     const interval = setInterval(fetchCoins, 30000)
@@ -36,6 +32,5 @@ export function useCoinList(limit?: number , vsCurrency = 'usd') {
       if (timeoutRef.current) clearTimeout(timeoutRef.current)
     }
   }, [vsCurrency])
-
   return { coins: limit ? coins.slice(0, limit) : coins, loading, error, retry: fetchCoins }
 }

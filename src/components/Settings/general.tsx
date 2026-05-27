@@ -9,7 +9,6 @@ function General() {
         <div>
             <p className="text-[10px] font-semibold uppercase tracking-[1.5px] text-white/25 px-1 mb-2">General</p>
             <div className="bg-[#131e30] rounded-2xl border border-white/[0.07] overflow-hidden">
-
                 <div className="flex justify-between items-center px-4 py-3.5 hover:bg-white/[0.03] transition-colors cursor-pointer">
                     <div className="flex items-center gap-3">
                         <div className="w-9 h-9 rounded-[10px] bg-white/[0.05] flex items-center justify-center shrink-0">
@@ -25,9 +24,7 @@ function General() {
                     </div>
                     <ChevronRight />
                 </div>
-
                 <div className="h-px bg-white/[0.05] mx-4" />
-
                 <div className="flex justify-between items-center px-4 py-3.5 hover:bg-white/[0.03] transition-colors cursor-pointer">
                     <div className="flex items-center gap-3">
                         <div className="w-9 h-9 rounded-[10px] bg-white/[0.05] flex items-center justify-center shrink-0">
@@ -50,5 +47,4 @@ function General() {
         </div>
     )
 }
-
 export default General

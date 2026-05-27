@@ -1,7 +1,11 @@
+import { useRef, useState, useEffect } from "react"
 import { navItems } from "./navigationItems"
 import { useNavigate, useLocation } from "react-router-dom"
+import logo from "../assets/coinova-logo.webp"
 
 export default function LgSidebar() {
+    const [moreOpen, setMoreOpen] = useState(false)
+    const moreRef = useRef<HTMLDivElement>(null)
     function getGreeting() {
         const h = new Date().getHours()
         if (h < 12) return 'Good morning'
@@ -12,6 +16,16 @@ export default function LgSidebar() {
     const navigate = useNavigate()
     const { pathname } = useLocation()
     const isActive = (path: string) => pathname === path
+    
+    useEffect(() =>{
+        const handler = (e: MouseEvent) =>{
+            if (moreRef.current && !moreRef.current.contains(e.target as Node)) {
+                setMoreOpen(false)
+            }
+        }
+        document.addEventListener('mousedown', handler)
+        return () => document.removeEventListener('mousedown', handler)
+    }, [])
 
     return (
         <div className="bg-[#0f1724] w-64 h-screen flex flex-col border-r border-white/[0.06]">
@@ -84,9 +98,99 @@ export default function LgSidebar() {
                         <p className="text-white/30 text-[11px]">FAQs, support</p>
                     </div>
                 </button>
-                <button>
-                    <p className="text-white/75 text-[13px] font-medium">More ...</p>
-                </button>
+                <div className="relative" ref={moreRef}>
+                    <button onClick={() => setMoreOpen(prev => !prev)} className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white/[0.04] cursor-pointer transition-colors">
+                        <div className="w-8 h-8 rounded-[10px] bg-white/[0.05] flex items-center justify-center shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#4485ae">
+                                <circle cx="8" cy="8" r="2"/>
+                                <circle cx="16" cy="8" r="2"/>
+                                <circle cx="8" cy="16" r="2"/>
+                                <circle cx="16" cy="16" r="2"/>
+                            </svg>
+                        </div>
+                        <p className="text-white/75 text-center text-[13px] font-medium">More ...</p>
+                    </button>
+                    {moreOpen && (
+                        <div className="absolute bottom-full left-0 mb-2 w-64 bg-[#1a1f26] border border-white/[0.08] rounded-2xl shadow-2xl overflow-hidden z-50">
+                            <div className="px-4 py-2.5 border-b border-white/[0.06]">
+                                <p className="text-white/30 text-[10px] font-semibold uppercase tracking-widest">More options</p>
+                            </div>
+                            <button onClick={() => { navigate(''); setMoreOpen(false) }} className="flex items-center justify-between w-full px-4 py-2.5 hover:bg-white/[0.04] transition-colors">
+                                <div className="flex items-center gap-3">
+                                    <div className="w-8 h-8 rounded-[10px] bg-white/[0.05] flex items-center justify-center shrink-0">
+                                        <svg width="16" height="16" viewBox="0 0 170 210" fill="none" stroke="#4485ae" strokeWidth="18" strokeLinecap="round" strokeLinejoin="round">
+                                            <circle cx="85" cy="55" r="32"/>
+                                            <path d="M0 210 C0 165 15 138 40 125 C55 118 68 114 85 114 C102 114 115 118 130 125 C155 138 170 165 170 210"/>
+                                        </svg>
+                                    </div>
+                                    <div className="text-left">
+                                        <p className="text-white/85 text-[13px] font-medium">Profile Details</p>
+                                        <p className="text-white/30 text-[11px]">Name, phone, address</p>
+                                    </div>
+                                </div>
+                                <div className="flex items-center gap-1.5">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+                                    <span className="text-white/20 text-sm">›</span>
+                                </div>
+                            </button>
+                            <button onClick={() => { navigate(''); setMoreOpen(false) }} className="flex items-center justify-between w-full px-4 py-2.5 hover:bg-white/[0.04] transition-colors">
+                                <div className="flex items-center gap-3">
+                                    <div className="w-8 h-8 rounded-[10px] bg-white/[0.05] flex items-center justify-center shrink-0">
+                                        <svg  width="16" height="16" viewBox="0 0 300 260" fill="none" stroke="#4485ae" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                                            <rect x="0" y="0" width="300" height="200" rx="16"/>
+                                            <line x1="0" y1="38" x2="300" y2="38"/>
+                                            <circle cx="68" cy="108" r="28"/>
+                                            <path d="M28 200 C28 170 44 152 68 145 C92 152 108 170 108 200"/>
+                                            <line x1="130" y1="80" x2="264" y2="80"/>
+                                            <line x1="130" y1="106" x2="240" y2="106"/>
+                                            <line x1="130" y1="132" x2="255" y2="132"/>
+                                            <polyline points="155,185 165,195 185,165" stroke="#22c55e" stroke-width="14"/>
+                                        </svg>
+                                    </div>
+                                    <div className="text-left">
+                                        <p className="text-white/85 text-[13px] font-medium">Identity Verification</p>
+                                        <div className="bg-[#1e3c34] w-fit px-2 py-[1px] rounded-full mt-0.5">
+                                            <p className="text-[#4ade80] text-[10px] md:text-[12px] font-medium">Verified</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span className="text-white/20 text-base">›</span>
+                            </button>
+                             <button onClick={() => { navigate(''); setMoreOpen(false) }} className="flex items-center justify-between w-full px-4 py-2.5 hover:bg-white/[0.04] transition-colors">
+                                <div className="flex items-center gap-3">
+                                    <div className="w-8 h-8 rounded-[10px] bg-white/[0.05] flex items-center justify-center shrink-0 overflow-hidden">
+                                        <img src={logo} alt="CoinOva" className="w-7 h-7 object-contain" />
+                                    </div>
+                                    <div>
+                                        <p className="text-white/85 text-[13px] font-medium">About CoinOva</p>
+                                        <p className="text-white/30 text-[11px]">Version, changelog</p>
+                                    </div>
+                                </div>
+                                <span className="text-white/20 text-base">›</span>
+                            </button>
+                            <button onClick={() => { navigate(''); setMoreOpen(false) }} className="flex items-center justify-between w-full px-4 py-2.5 hover:bg-white/[0.04] transition-colors">
+                                <div className="flex items-center gap-3">
+                                    <div className="w-8 h-8 rounded-[10px] bg-white/[0.05] flex items-center justify-center shrink-0">
+                                        <svg width="20" height="20" viewBox="0 0 300 380" fill="none" stroke="#4485ae" stroke-width="15" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M150 4 L284 50 L284 170 C284 258 150 310 150 310 C150 310 16 258 16 170 L16 50 Z"/>
+                                            <rect x="90" y="70" width="120" height="150" rx="8"/>
+                                            <path d="M178 70 L210 102"/>
+                                            <path d="M178 70 L178 102 L210 102"/>
+                                            <line x1="108" y1="122" x2="192" y2="122"/>
+                                            <line x1="108" y1="145" x2="192" y2="145"/>
+                                            <line x1="108" y1="168" x2="165" y2="168"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p className="text-white/85 text-[13px] font-medium">Legal & Privacy</p>
+                                        <p className="text-white/30 text-[11px]">Terms, data policy</p>
+                                    </div>
+                                </div>
+                                <span className="text-white/20 text-base">›</span>
+                            </button>
+                        </div>
+                    )}
+                </div>
                 <div className="h-px bg-white/[0.05] mx-3 my-1" />
                 <button className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-red-500/[0.06] transition-colors w-full text-left">
                     <div className="w-8 h-8 rounded-[10px] bg-red-500/[0.08] flex items-center justify-center shrink-0">
@@ -99,7 +203,6 @@ export default function LgSidebar() {
                     <span className="text-red-400 text-[13px] font-medium">Log out</span>
                 </button>
             </div>
-
         </div>
     )
 }

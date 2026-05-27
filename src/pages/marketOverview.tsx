@@ -120,9 +120,8 @@ function MarketOverview() {
 
   return (
     <div>
-      <div className="fixed top-0 right-0 left-64 bg-[#23282e] px-4 pt-4 pb-2">
+      <div className="fixed top-0 right-0 left-0 lg:left-64 bg-[#23282e] px-4 pt-4 pb-2">
         <p className="font-bold text-white font-jakarta text-2xl pb-5">Market Overview</p>
-
         <div className="relative mb-3">
           <svg className="absolute left-3 top-1/2 -translate-y-1/2" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8a8c91" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
             <circle cx="11" cy="11" r="8"/>
@@ -139,9 +138,8 @@ function MarketOverview() {
           )}
         </div>
       </div>
-
       <div className="bg-[#141720] min-h-screen px-4 pt-45">
-        <div className="bg-[#141720] fixed top-32 right-0 left-64 flex gap-3 overflow-x-auto py-2 pl-4 mb-4 scrollbar-hide shadow-[0_10px_10px_-5px_rgba(255,255,255,0.2)]">
+        <div className="bg-[#141720] fixed top-32 right-0 left-0 lg:left-64 flex gap-3 overflow-x-auto py-2 pl-4 mb-4 scrollbar-hide shadow-[0_10px_10px_-5px_rgba(255,255,255,0.2)]">
           {FILTERS.map(f => (
             <button key={f.value} onClick={() => setActiveFilter(f.value)} className={`shrink-0 px-4 py-2.5 rounded-full text-sm font-medium transition-all ${activeFilter === f.value
                   ? 'bg-[#0189f4] text-white/70'

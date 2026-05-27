@@ -37,7 +37,6 @@ const articles = [
     image: Xrp,
   },
 ]
-
 export default function NewsSection() {
   return (
     <div className="px-4 py-6">

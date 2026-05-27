@@ -19,8 +19,6 @@ export function buyCoin(coin: PortfolioItem) {
   if (existing) {
     existing.amount += coin.amount
     existing.buyPrice = coin.buyPrice
-
-    // remove if amount hits 0
     if (existing.amount <= 0) {
       const index = portfolio.findIndex(p => p.coinId === coin.coinId)
       portfolio.splice(index, 1)

@@ -14,7 +14,6 @@ interface Asset {
   value: number
   currentPrice: number
 }
-
 const FIAT_CURRENCIES = [
   { code: "NGN", name: "Nigerian Naira",  symbol: "₦",   flag: "🇳🇬", rate: 1620.45 },
   { code: "USD", name: "US Dollar",       symbol: "$",   flag: "🇺🇸", rate: 1       },
@@ -54,9 +53,7 @@ export default function SellCrypto() {
     currentPrice: usdtPrice,
   }
 
-  const coinItems = portfolio
-    .filter(item => item.coinId !== 'tether')
-    .map(item => {
+  const coinItems = portfolio .filter(item => item.coinId !== 'tether').map(item => {
       const live = coins.find(c => c.id === item.coinId)
       const currentPrice = live?.current_price ?? item.buyPrice
       return {
@@ -101,7 +98,6 @@ export default function SellCrypto() {
     setActivePct("")
     setTimeout(() => setSuccess(false), 3000)
   }
-
   return (
     <div className="min-h-screen bg-[#141720] pb-28">
       <div className="bg-[#121621] px-4 pt-4 pb-4">
@@ -164,13 +160,10 @@ export default function SellCrypto() {
               {coinDropdown && (
                 <div className="absolute top-full left-0 right-0 z-50 mt-1.5 bg-[#181e2a] border border-white/[0.08] rounded-2xl overflow-hidden shadow-2xl max-h-52 overflow-y-auto">
                   {ownedAssets.map((asset, i) => (
-                    <button
-                      key={asset.coinId}
-                      onClick={() => { setSelectedAsset(asset); setCoinDropdown(false); setAmount(""); setActivePct("") }}
+                    <button key={asset.coinId} onClick={() => { setSelectedAsset(asset); setCoinDropdown(false); setAmount(""); setActivePct("") }}
                       className={`w-full flex items-center justify-between px-4 py-3 hover:bg-white/[0.04] transition-all
                         ${i !== ownedAssets.length - 1 ? "border-b border-white/[0.05]" : ""}
-                        ${selectedAsset?.coinId === asset.coinId ? "bg-white/[0.03]" : ""}`}
-                    >
+                        ${selectedAsset?.coinId === asset.coinId ? "bg-white/[0.03]" : ""}`}>
                       <div className="flex items-center gap-3">
                         <img src={asset.image} alt={asset.name} className="w-8 h-8 rounded-full object-cover flex-shrink-0" />
                         <div className="text-left">
@@ -225,10 +218,7 @@ export default function SellCrypto() {
           <div>
             <p className="text-[11px] font-semibold text-white/40 uppercase tracking-widest mb-2">Receive in</p>
             <div className="relative">
-              <button
-                onClick={() => { setFiatDropdown(!fiatDropdown); setCoinDropdown(false) }}
-                className="w-full bg-[#1a1f2e] border border-white/[0.08] rounded-2xl px-4 py-3.5 flex items-center justify-between hover:border-white/[0.14] transition-all"
-              >
+              <button onClick={() => { setFiatDropdown(!fiatDropdown); setCoinDropdown(false) }} className="w-full bg-[#1a1f2e] border border-white/[0.08] rounded-2xl px-4 py-3.5 flex items-center justify-between hover:border-white/[0.14] transition-all">
                 <div className="flex items-center gap-3">
                   <span className="text-2xl">{selectedFiat.flag}</span>
                   <div className="text-left">
@@ -253,13 +243,9 @@ export default function SellCrypto() {
               {fiatDropdown && (
                 <div className="absolute top-full left-0 right-0 z-50 mt-1.5 bg-[#181e2a] border border-white/[0.08] rounded-2xl overflow-hidden shadow-2xl">
                   {FIAT_CURRENCIES.map((fiat, i) => (
-                    <button
-                      key={fiat.code}
-                      onClick={() => { setSelectedFiat(fiat); setFiatDropdown(false) }}
-                      className={`w-full flex items-center justify-between px-4 py-3 hover:bg-white/[0.04] transition-all
+                    <button key={fiat.code} onClick={() => { setSelectedFiat(fiat); setFiatDropdown(false) }} className={`w-full flex items-center justify-between px-4 py-3 hover:bg-white/[0.04] transition-all
                         ${i !== FIAT_CURRENCIES.length - 1 ? "border-b border-white/[0.05]" : ""}
-                        ${selectedFiat.code === fiat.code ? "bg-white/[0.03]" : ""}`}
-                    >
+                        ${selectedFiat.code === fiat.code ? "bg-white/[0.03]" : ""}`}>
                       <div className="flex items-center gap-3">
                         <span className="text-xl">{fiat.flag}</span>
                         <div className="text-left">
@@ -320,13 +306,7 @@ export default function SellCrypto() {
               Funds will be sent to your linked bank account within 10–15 mins after the transaction is confirmed.
             </p>
           </div>
-
-          {/* ── sell button ── */}
-          <button
-            onClick={handleSell}
-            disabled={!selectedAsset || sellAmount <= 0 || insufficient}
-            className="w-full py-4 rounded-2xl bg-red-500 hover:bg-red-600 active:scale-[0.99] transition-all text-white font-jakarta font-bold text-[15px] flex items-center justify-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed"
-          >
+          <button onClick={handleSell} disabled={!selectedAsset || sellAmount <= 0 || insufficient} className="w-full py-4 rounded-2xl bg-red-500 hover:bg-red-600 active:scale-[0.99] transition-all text-white font-jakarta font-bold text-[15px] flex items-center justify-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed">
             {success ? (
               <>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -346,7 +326,6 @@ export default function SellCrypto() {
               </>
             )}
           </button>
-
         </div>
       )}
     </div>

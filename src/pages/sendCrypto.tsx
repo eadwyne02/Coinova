@@ -117,17 +117,11 @@ export default function SendCrypto() {
       navigate(-1)
     }, 3000)
   }
-
   return (
     <div className="min-h-screen bg-[#141720] pb-28">
-
-      {/* header */}
       <div className="bg-[#121621] px-4 pt-4 pb-4">
         <div className="flex items-center gap-3">
-          <button
-            onClick={() => navigate(-1)}
-            className="p-[6px] rounded-full bg-white/[0.06] hover:bg-white/[0.12] transition-all"
-          >
+          <button onClick={() => navigate(-1)} className="p-[6px] rounded-full bg-white/[0.06] hover:bg-white/[0.12] transition-all">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>
             </svg>
@@ -142,10 +136,7 @@ export default function SendCrypto() {
         <div>
           <p className="text-white/40 text-[11px] font-semibold tracking-widest uppercase mb-2">Asset</p>
           <div className="relative">
-            <button
-              onClick={() => { setAssetDropdown(!assetDropdown); setNetworkDropdown(false) }}
-              className="w-full bg-[#1a1f2e] border border-white/[0.07] rounded-2xl px-4 py-3.5 flex items-center justify-between hover:border-[#6b5cf7]/30 transition-all"
-            >
+            <button onClick={() => { setAssetDropdown(!assetDropdown); setNetworkDropdown(false) }} className="w-full bg-[#1a1f2e] border border-white/[0.07] rounded-2xl px-4 py-3.5 flex items-center justify-between hover:border-[#6b5cf7]/30 transition-all">
               {selectedAsset ? (
                 <>
                   <div className="flex items-center gap-3">
@@ -279,23 +270,14 @@ export default function SendCrypto() {
             <p className="text-white/40 text-[11px] font-semibold tracking-widest uppercase mb-2">Amount</p>
             <div className="bg-[#1a1f2e] border border-white/[0.07] rounded-2xl px-4 py-4">
               <div className="flex items-center gap-2">
-                <input
-                  type="number"
-                  value={amount}
-                  onChange={e => setAmount(e.target.value)}
-                  placeholder="0.00"
-                  className="flex-1 bg-transparent text-white text-3xl font-jakarta font-bold outline-none placeholder:text-white/20 tracking-tight"
-                />
+                <input type="number" value={amount} onChange={e => setAmount(e.target.value)} placeholder="0.00" className="flex-1 bg-transparent text-white text-3xl font-jakarta font-bold outline-none placeholder:text-white/20 tracking-tight"/>
                 <span className="text-white/40 text-sm font-semibold flex-shrink-0">
                   {selectedAsset.symbol.toUpperCase()}
                 </span>
               </div>
               <div className="flex items-center justify-between mt-2">
                 <p className="text-white/30 text-[11px]">≈ ${fmt(usdValue)} USD</p>
-                <button
-                  onClick={() => setAmount(selectedAsset.amount.toFixed(6))}
-                  className="text-[11px] text-[#6b5cf7] font-medium"
-                >
+                <button onClick={() => setAmount(selectedAsset.amount.toFixed(6))} className="text-[11px] text-[#6b5cf7] font-medium">
                   Max: {selectedAsset.amount.toFixed(6)}
                 </button>
               </div>
@@ -305,8 +287,6 @@ export default function SendCrypto() {
             )}
           </div>
         )}
-
-        {/* summary */}
         {selectedAsset && sendAmount > 0 && isValidAddress && (
           <div className="bg-[#1a1f2e] border border-white/[0.06] rounded-2xl px-4 py-4 flex flex-col gap-3">
             <div className="flex justify-between items-center">
@@ -349,13 +329,7 @@ export default function SendCrypto() {
             All transactions are encrypted and secured. Ensure you are sending to a trusted address on the correct network.
           </p>
         </div>
-
-        {/* send button */}
-        <button
-          onClick={handleSend}
-          disabled={!canSend}
-          className="w-full py-4 rounded-2xl bg-[#6b5cf7] hover:bg-[#5a4de6] active:scale-[0.99] transition-all text-white font-jakarta font-bold text-[15px] flex items-center justify-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed"
-        >
+        <button onClick={handleSend} disabled={!canSend} className="w-full py-4 rounded-2xl bg-[#6b5cf7] hover:bg-[#5a4de6] active:scale-[0.99] transition-all text-white font-jakarta font-bold text-[15px] flex items-center justify-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed">
           {success ? (
             <>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -374,7 +348,6 @@ export default function SendCrypto() {
             </>
           )}
         </button>
-
       </div>
     </div>
   )

@@ -6,7 +6,6 @@ interface ToggleProps {
     onChange?: (value: boolean) => void
     disabled?: boolean
 }
-
 function Toggle({ defaultOn = false, checked, onChange, disabled = false }: ToggleProps) {
     const [internalOn, setInternalOn] = useState(defaultOn)
     const on = checked !== undefined ? checked : internalOn
@@ -17,22 +16,14 @@ function Toggle({ defaultOn = false, checked, onChange, disabled = false }: Togg
         if (checked === undefined) setInternalOn(next)
         onChange?.(next)
     }
-
     return (
-        <button
-            role="switch"
-            aria-checked={on}
-            disabled={disabled}
-            onClick={handleClick}
-            className={`relative w-11 h-6 rounded-full border-none p-0 transition-colors duration-200 flex-shrink-0 cursor-pointer
-                ${on ? "bg-[#00a9f9]" : "bg-white/10"}
-                ${disabled ? "opacity-50 cursor-not-allowed" : ""}`}
-        >
+        <button role="switch" aria-checked={on} disabled={disabled} onClick={handleClick} className={`relative w-11 h-6 rounded-full border-none p-0 transition-colors duration-200 flex-shrink-0 cursor-pointer
+            ${on ? "bg-[#00a9f9]" : "bg-white/10"}
+            ${disabled ? "opacity-50 cursor-not-allowed" : ""}`}>
             <span className={`absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform duration-200 ${on ? "translate-x-5" : "translate-x-0"}`} />
         </button>
     )
 }
-
 const ChevronRight = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none">
         <path d="M9 6L15 12L9 18" stroke="rgba(255,255,255,0.2)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -46,7 +37,6 @@ function Privacy() {
         <div>
             <p className="text-[10px] font-semibold uppercase tracking-[1.5px] text-white/25 px-1 mb-2">Privacy & Security</p>
             <div className="bg-[#131e30] rounded-2xl border border-white/[0.07] overflow-hidden">
-
                 <div className="flex justify-between items-center px-4 py-3.5 hover:bg-white/[0.03] transition-colors cursor-pointer">
                     <div className="flex items-center gap-3">
                         <div className="w-9 h-9 rounded-[10px] bg-white/[0.05] flex items-center justify-center shrink-0">
@@ -68,9 +58,7 @@ function Privacy() {
                     </div>
                     <Toggle defaultOn={false} onChange={(val) => console.log("Biometric:", val)} />
                 </div>
-
                 <Divider />
-
                 <div className="flex justify-between items-center px-4 py-3.5 hover:bg-white/[0.03] transition-colors cursor-pointer">
                     <div className="flex items-center gap-3">
                         <div className="w-9 h-9 rounded-[10px] bg-white/[0.05] flex items-center justify-center shrink-0">
@@ -89,9 +77,7 @@ function Privacy() {
                     </div>
                     <ChevronRight />
                 </div>
-
                 <Divider />
-
                 <div className="flex justify-between items-center px-4 py-3.5 hover:bg-white/[0.03] transition-colors cursor-pointer">
                     <div className="flex items-center gap-3">
                         <div className="w-9 h-9 rounded-[10px] bg-white/[0.05] flex items-center justify-center shrink-0">
@@ -106,9 +92,7 @@ function Privacy() {
                     </div>
                     <ChevronRight />
                 </div>
-
                 <Divider />
-
                 <div className="flex justify-between items-center px-4 py-3.5 hover:bg-white/[0.03] transition-colors cursor-pointer">
                     <div className="flex items-center gap-3">
                         <div className="w-9 h-9 rounded-[10px] bg-white/[0.05] flex items-center justify-center shrink-0">
@@ -125,9 +109,7 @@ function Privacy() {
                     </div>
                     <ChevronRight />
                 </div>
-
             </div>
-
             <div className="mt-4 bg-[#131e30] rounded-2xl border border-white/[0.07] overflow-hidden">
                 <button className="w-full flex items-center justify-center gap-2 px-4 py-4 hover:bg-red-500/[0.06] transition-colors cursor-pointer">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ef4444" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

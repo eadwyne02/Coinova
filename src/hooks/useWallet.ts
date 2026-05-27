@@ -7,12 +7,10 @@ export function useWallet() {
   useEffect(() => {
     setBalance(getBalance())
   }, [])
-
   const spend = (amount: number): boolean => {
     const success = deductBalance(amount)
     if (success) setBalance(getBalance())
     return success
   }
-
   return { balance, spend }
 }

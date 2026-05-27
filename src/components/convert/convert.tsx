@@ -214,12 +214,7 @@ export default function ConvertFunds() {
           </div>
         )}
 
-        {/* convert button */}
-        <button
-          onClick={handleConvert}
-          disabled={!fromAsset || !toAsset || fromAmount <= 0 || insufficient}
-          className="w-full bg-[#1a6ee8] text-white font-semibold py-4 rounded-2xl active:opacity-80 disabled:opacity-40 disabled:cursor-not-allowed"
-        >
+        <button onClick={handleConvert} disabled={!fromAsset || !toAsset || fromAmount <= 0 || insufficient} className="w-full bg-[#1a6ee8] text-white font-semibold py-4 rounded-2xl active:opacity-80 disabled:opacity-40 disabled:cursor-not-allowed">
           {success ? 'Converted!' : `Convert ${fromAsset?.symbol.toUpperCase() ?? ''}`}
         </button>
 

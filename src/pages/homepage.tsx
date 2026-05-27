@@ -44,19 +44,13 @@ export default function HomePage(){
             <div className='hidden relative z-10  md:grid md:grid-cols-2 lg:grid lg:grid-cols-2 '>
                 <div>
                     <div className="mx-5 rounded-[24px] overflow-hidden relative border border-white/[0.07]" style={{ background: 'linear-gradient(135deg, #0c1f3f, #0a1630, #071020)' }}>
-                    <div className="absolute inset-0 pointer-events-none" style={{
-        background: `radial-gradient(ellipse 70% 55% at 95% 5%, rgba(21,101,216,0.38), transparent 65%),
-                     radial-gradient(ellipse 45% 45% at 5% 90%, rgba(74,144,226,0.1), transparent 60%)`
-      }} />
-      <div className="absolute inset-0 pointer-events-none" style={{
-        backgroundImage: `linear-gradient(rgba(214, 70, 70, 0.02) 1px, transparent 1px),
-                          linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px)`,
-        backgroundSize: '28px 28px'
-      }} />
+                    <div className="absolute inset-0 pointer-events-none" style={{ background: `radial-gradient(ellipse 70% 55% at 95% 5%, rgba(21,101,216,0.38), transparent 65%),
+                     radial-gradient(ellipse 45% 45% at 5% 90%, rgba(74,144,226,0.1), transparent 60%)`}} />
+                    <div className="absolute inset-0 pointer-events-none" style={{backgroundImage: `linear-gradient(rgba(214, 70, 70, 0.02) 1px, transparent 1px),
+                          linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px)`,backgroundSize: '28px 28px'}} />
                     <BalanceCard />
                     <HomeTransaction />
                 </div>
-                
                 <div className='px-5 mt-5'>
                     <p className='font-bold text-2xl font-jakarta text-white/80'>News</p>
                     <News />

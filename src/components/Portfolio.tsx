@@ -15,7 +15,6 @@ export default function PortfolioPage() {
                 <div className="h-3 w-16 rounded bg-white/5 animate-pulse" />
                 <div className="h-2.5 w-12 rounded bg-white/5 animate-pulse" />
               </div>
-              {/* Chart skeleton — give it explicit size */}
               <div className="w-20 h-10 rounded bg-white/5 animate-pulse hidden md:block" />
               <div className="space-y-1.5 text-right">
                 <div className="h-3 w-20 rounded bg-white/5 animate-pulse" />
@@ -25,7 +24,6 @@ export default function PortfolioPage() {
           ))}
         </div>
       )}
-
       {!loading && (
         <div>
           {coins.map((coin, index) => (

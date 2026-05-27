@@ -19,9 +19,7 @@ export default function CoinRow({ coin }: { coin: Coin }) {
   return (
     <>
       <div
-        className="flex items-center justify-between py-3.5 border-b border-white/[0.06] last:border-none cursor-pointer"
-        // onClick={() => setShowModal(true)} 
-      >
+        className="flex items-center justify-between py-3.5 border-b border-white/[0.06] last:border-none cursor-pointer">
         <div className="flex items-center gap-2.5 min-w-[110px]">
           <img src={coin.image} alt={coin.name} className="w-9 h-9 rounded-full object-cover" />
           <div>
@@ -33,10 +31,7 @@ export default function CoinRow({ coin }: { coin: Coin }) {
         </div>
 
         <div className="flex-1 flex justify-center">
-          <MiniChart
-            data={coin.sparkline_in_7d.price}
-            color={isPositive ? '#22c55e' : '#ef4444'}
-          />
+          <MiniChart data={coin.sparkline_in_7d.price} color={isPositive ? '#22c55e' : '#ef4444'}/>
         </div>
 
         <div className="text-right min-w-[80px]">
@@ -48,8 +43,6 @@ export default function CoinRow({ coin }: { coin: Coin }) {
           </p>
         </div>
       </div>
-
-      {/* buy modal */}
       {showModal && (
         <BuyModal coin={coin} onClose={() => setShowModal(false)} />
       )}

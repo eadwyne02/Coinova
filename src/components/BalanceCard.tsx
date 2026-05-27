@@ -52,10 +52,7 @@ export default function BalanceCard() {
           <span className="text-[11px] text-white/38 tracking-[1.8px] uppercase font-medium font-jakarta">
             My Balance
           </span>
-          <button
-            onClick={() => setShowBalance(!showBalance)}
-            className="bg-white/[0.05] border border-white/[0.08] rounded-lg p-[5px] flex items-center"
-          >
+          <button onClick={() => setShowBalance(!showBalance)} className="bg-white/[0.05] border border-white/[0.08] rounded-lg p-[5px] flex items-center">
             {showBalance ? (
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.38)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
@@ -98,8 +95,6 @@ export default function BalanceCard() {
           </span>
         </div>
       </div>
-      
-
     </div>
   )
 }
