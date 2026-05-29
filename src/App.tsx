@@ -14,6 +14,7 @@ import Settings from "./pages/settings";
 import Notifications from "./pages/notification";
 import LgSidebar from "./components/lgSidebar";
 
+
 function App(){
   const [loading, setLoading] = useState(true)
   if (loading) return <SplashScreen onFinish={() => setLoading(false)} />

@@ -10,8 +10,11 @@ import Sidebar from '../components/sidebar'
 export default function HomePage(){
     const [isSidebarOpen, setIsSidebarOpen] = useState(false)
     return(
-        <div>
+        <div className='relative'>
             <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
+            {isSidebarOpen && (
+                <div className="fixed inset-0 z-[150] bg-black/50 transition-opacity duration-200" onClick={() => setIsSidebarOpen(false)}/>
+            )}
             <Header onAvatarClick={() => setIsSidebarOpen(prev => !prev)}  />
             
            <div className="pt-30 min-h-screen bg-[#121621] pt-2">
